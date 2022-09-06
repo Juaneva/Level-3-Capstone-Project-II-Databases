@@ -1,0 +1,97 @@
+#	Time			Action									Message							Duration / Fetch
+__________________________________________________________________________________________________________________________________________________________
+
+1	12:09:22		create database QuickFoodMS						1 row(s) affected						0.407 sec
+
+__________________________________________________________________________________________________________________________________________________________
+
+2	12:09:36		use QuickFoodMS								0 row(s) affected						0.000 sec
+
+__________________________________________________________________________________________________________________________________________________________
+
+3	12:12:36		create table orders (
+ 				order_number int not null auto_increment primary key,
+ 				customer_id int,
+ 				restaurant_id int,
+ 				total_cost decimal(6,2),
+ 				driver_id int,
+ 				finalised boolean
+ 				)										0 row(s) affected						1.953 sec
+
+__________________________________________________________________________________________________________________________________________________________
+
+4	12:17:49		create table customer (
+ 				customer_id int not null auto_increment primary key,
+ 				customer_firstname varchar(50),
+ 				customer_surname varchar(50),
+ 				customer_phone_num varchar (10),
+ 				customer_address varchar(80),
+ 				customer_city varchar(40),
+ 				customer_email varchar(30)
+ 				)										0 row(s) affected						0.781 sec
+
+__________________________________________________________________________________________________________________________________________________________
+
+5	12:22:10		create table driver (
+ 				driver_id int not null auto_increment primary key,
+				driver_name varchar(50),
+ 				driver_city varchar(50),
+ 				driver_workload int
+ 				)										0 row(s) affected						0.687 sec
+
+___________________________________________________________________________________________________________________________________________________________
+
+6	12:24:38		create table restaurant(
+ 				restaurant_id int not null auto_increment primary key,
+ 				restaurant_name varchar (50),
+ 				restaurant_phone_num varchar(10),
+ 				restaurant_city varchar(30)
+ 				)										0 row(s) affected						0.735 sec
+
+__________________________________________________________________________________________________________________________________________________________
+
+7	12:26:36		create table items_order (
+ 				item_id int,
+ 				order_number int,
+ 				special_instructions varchar(150),
+ 				item_quantity int,
+ 				item_cost decimal(6,2)
+ 				)										0 row(s) affected						0.891 sec
+
+___________________________________________________________________________________________________________________________________________________________
+
+8	12:29:47		create table item(
+ 				item_id int not null auto_increment primary key,
+ 				item_name varchar(80),
+ 				item_price decimal(6,2)
+ 				)										0 row(s) affected						1.093 sec
+
+___________________________________________________________________________________________________________________________________________________________
+
+9	12:30:37		alter table orders add foreign key (customer_id) 
+				references customer(customer_id)					0 row(s) affected						3.109 sec	
+
+___________________________________________________________________________________________________________________________________________________________
+
+10	12:31:43		alter table orders add foreign key (restaurant_id) 
+				references restaurant(restaurant_id)				0 row(s) affected						1.719 sec
+
+___________________________________________________________________________________________________________________________________________________________
+
+11	12:32:54		alter table orders add foreign key (driver_id) 
+				references driver(driver_id)						0 row(s) affected						1.969 sec
+
+___________________________________________________________________________________________________________________________________________________________
+
+12	12:34:02		alter table items_order add foreign key (item_id) 
+				references item(item_id)						0 row(s) affected 					1.953 sec
+
+___________________________________________________________________________________________________________________________________________________________
+
+13	12:34:55		alter table items_order add foreign key (order_number) 
+				references orders(order_number)					0 row(s) affected						2.031 sec
+
+___________________________________________________________________________________________________________________________________________________________
+
+
+
